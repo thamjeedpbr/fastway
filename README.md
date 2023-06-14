@@ -4,7 +4,7 @@
 Steps to follow to run this project
 
 
-1. install composer by running the commend 
+1. Install composer  
 
 ```bash
   composer install
