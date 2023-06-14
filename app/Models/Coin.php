@@ -12,7 +12,6 @@ class Coin extends Model
     public static function collect()
     {
         $curl = curl_init();
-
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://api.coingecko.com/api/v3/coins/list?include_platform=true',
             CURLOPT_RETURNTRANSFER => true,
@@ -26,11 +25,11 @@ class Coin extends Model
                 'Cookie: __cf_bm=IgioVKRW7LQHhB6rGBT7hAP9mXuyoX1mNSzh5sKSXBM-1686747173-0-AUB+sK5DJmIBB1a/qEiaxWhj/hhU9qb9kfnjaxzDkJO4biKCmwiM2MDkbVSKBj1SaRlMLh5OEUABj0KZ85mPdrA=',
             ),
         ));
-
         $response = curl_exec($curl);
-
         curl_close($curl);
+
         $received_coins = json_decode($response);
+
         foreach ($received_coins as $no => $received_coin) {
             dump(++$no ." coin added with id-".$received_coin->id);
             $collect_coin = new Coin();
